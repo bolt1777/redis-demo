@@ -1,0 +1,22 @@
+---
+
+- name: Install redis server
+  yum:
+    name: redis
+    state: present
+
+- name: Configure redis
+  template: src=redis.conf.j2 dest=/etc/redis.conf
+  register: redis_config
+
+- name: Configure sentinel
+  template: src=redis-sentinel.conf.j2 dest=/etc/redis-sentinel.conf
+  register: sentinel_config
+
+- name: Restart redis
+  systemd: service="redis.service" state=restarted enabled=yes daemon_reload=yes
+  when: redis_config.changed
+
+- name: Restart sentinel
+  systemd: service="redis-sentinel.service" state=restarted enabled=yes daemon_reload=yes
+  when: sentinel_config.changed

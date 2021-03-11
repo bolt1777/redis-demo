@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  become: true
+  vars:
+    - redis_master_name: my-master
+    - redis_master_ip: 192.168.60.10
+    - redis_port: 6379
+    - sentinel_quorum: 2
+  roles:
+    - geerlingguy.repo-epel
+    - redis
