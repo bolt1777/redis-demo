@@ -3,8 +3,8 @@
 ## Installation
 
 ```bash
-git clone https://github.com/dmarych/vagrant-redis-demo.git
-cd vagrant-redis-demo
+git clone https://github.com/dmarych/redis-demo.git
+cd redis-demo
 vagrant up
 ```
 
