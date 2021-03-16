@@ -12,3 +12,4 @@ vagrant up
 To get state of redis, run this
 ```bash
 vagrant ssh redis0 -c "redis-cli -p 26379 info sentinel"
+```
